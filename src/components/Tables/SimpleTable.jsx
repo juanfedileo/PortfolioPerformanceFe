@@ -36,7 +36,7 @@ const SimpleTable = () => {
 
   return (
     <>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-[50%] m-10">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-[50%] m-10 flex-1">
         <table className="w-full text-sm text-left text-gray-400">
           <thead className="text-xs uppercase bg-gray-700 text-gray-400">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -94,6 +94,7 @@ const SimpleTable = () => {
                 href="#"
                 className="flex items-center justify-center px-3 h-8 ms-0 leading-tight border rounded-s-lg  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-400 hover:text-white"
                 onClick={() => table.setPageIndex(0)}
+                disabled={!table.getCanPreviousPage()}
               >
                 Primera
               </button>
@@ -103,6 +104,7 @@ const SimpleTable = () => {
                 href="#"
                 className="flex items-center justify-center px-3 h-8 leading-tight border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-400 hover:text-white"
                 onClick={() => table.previousPage()}
+                disabled={!table.getCanPreviousPage()}
               >
                 Anterior
               </button>
@@ -120,6 +122,7 @@ const SimpleTable = () => {
                     table.nextPage();
                   }
                 }}
+                disabled={!table.getCanNextPage()}
               >
                 Siguiente
               </button>
@@ -129,6 +132,7 @@ const SimpleTable = () => {
                 href="#"
                 className="flex items-center justify-center px-3 h-8 leading-tight border rounded-e-lg bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-400 hover:text-white"
                 onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                disabled={!table.getCanNextPage()}
               >
                 Ultima
               </button>
